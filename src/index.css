@@ -7,12 +7,17 @@
   --text-muted: #8b98a9;
   --accent: #64ffda;
   --accent-dim: rgba(100, 255, 218, 0.12);
+  --accent-glow: rgba(100, 255, 218, 0.35);
+  --accent-2: #7c3aed;
   --border: rgba(255, 255, 255, 0.08);
 
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   --max-width: 1100px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   font-family: var(--font-sans);
   line-height: 1.5;
@@ -28,10 +33,67 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 6.5rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 body {
+  position: relative;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  width: min(60vw, 720px);
+  height: min(60vw, 720px);
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+body::before {
+  top: -12%;
+  right: -12%;
+  background: var(--accent);
+}
+
+body::after {
+  bottom: -18%;
+  left: -18%;
+  background: var(--accent-2);
 }
 
 #root {
@@ -75,12 +137,15 @@ button {
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2.5rem;
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
 .section-label::after {
@@ -91,7 +156,16 @@ button {
 }
 
 .section-label .index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   color: var(--accent);
+  letter-spacing: 0;
 }
 
 section {

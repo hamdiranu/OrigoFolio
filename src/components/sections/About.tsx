@@ -1,11 +1,23 @@
+import { useReveal } from '../../hooks/useReveal'
+import { IconCheck } from '../common/icons'
+
+const highlights = [
+  'Component-driven React & TypeScript apps',
+  'Real-time 3D scenes with Three.js / R3F',
+  'Custom GLSL shaders & post-processing',
+  'Performance-minded, accessible UI',
+]
+
 export default function About() {
+  const [ref, visible] = useReveal<HTMLDivElement>()
+
   return (
     <section id="about">
       <div className="container">
         <p className="section-label">
-          <span className="index">01.</span> About Me
+          <span className="index">01</span> About Me
         </p>
-        <div className="about-grid">
+        <div ref={ref} className={`about-grid reveal ${visible ? 'in-view' : ''}`}>
           <div className="about-text">
             <p>
               I'm a frontend engineer focused on building fast, accessible web interfaces —
@@ -23,12 +35,17 @@ export default function About() {
               animation, and interfaces that feel considered rather than assembled.
             </p>
           </div>
-          <ul className="about-highlights">
-            <li>Component-driven React &amp; TypeScript apps</li>
-            <li>Real-time 3D scenes with Three.js / R3F</li>
-            <li>Custom GLSL shaders &amp; post-processing</li>
-            <li>Performance-minded, accessible UI</li>
-          </ul>
+          <div className="about-panel">
+            <p className="about-panel-title">Focus areas</p>
+            <ul className="about-highlights">
+              {highlights.map((item) => (
+                <li key={item}>
+                  <IconCheck className="check-icon" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
