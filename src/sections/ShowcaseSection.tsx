@@ -6,10 +6,10 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
-  const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const rydeRef = useRef<HTMLDivElement>(null);
+  const libraryRef = useRef<HTMLDivElement>(null);
+  const ycDirectoryRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     // Animation for the main section

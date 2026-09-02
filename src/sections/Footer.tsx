@@ -1,4 +1,4 @@
-import { socialImgs } from "../constants";
+import { socialImgs } from "@/constants";
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col justify-center">
           <p className="text-center md:text-end">
-            © {new Date().getFullYear()} Adrian Hajdin. All rights reserved.
+            © {new Date().getFullYear()} Hamdi Hajdin. All rights reserved.
           </p>
         </div>
       </div>

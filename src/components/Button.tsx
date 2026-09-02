@@ -4,7 +4,13 @@
  * with a small offset from the top for better visual placement.
  */
 
-const Button = ({ text, className, id }) => {
+interface ButtonProps {
+  text: string;
+  className?: string;
+  id?: string;
+}
+
+const Button = ({ text, className, id }: ButtonProps) => {
   return (
     <a
       onClick={(e) => {

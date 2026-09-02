@@ -1,4 +1,9 @@
-const TitleHeader = ({ title, sub }) => {
+interface TitleHeaderProps {
+  title: string;
+  sub: string;
+}
+
+const TitleHeader = ({ title, sub }: TitleHeaderProps) => {
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="hero-badge">

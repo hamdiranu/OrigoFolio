@@ -1,8 +1,13 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
+import type { Points } from "three";
 
-const Particles = ({ count = 200 }) => {
-  const mesh = useRef();
+interface ParticlesProps {
+  count?: number;
+}
+
+const Particles = ({ count = 200 }: ParticlesProps) => {
+  const mesh = useRef<Points>(null);
 
   const particles = useMemo(() => {
     const temp = [];
@@ -20,7 +25,8 @@ const Particles = ({ count = 200 }) => {
   }, [count]);
 
   useFrame(() => {
-    const positions = mesh.current.geometry.attributes.position.array;
+    if (!mesh.current) return;
+    const positions = mesh.current.geometry.attributes.position.array as Float32Array;
     for (let i = 0; i < count; i++) {
       let y = positions[i * 3 + 1];
       y -= particles[i].speed;
@@ -42,9 +48,7 @@ const Particles = ({ count = 200 }) => {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial

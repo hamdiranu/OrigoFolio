@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { navLinks } from "../constants";
+import { navLinks } from "@/constants";
 
 const NavBar = () => {
   // track if the user has scrolled down the page
@@ -26,7 +26,7 @@ const NavBar = () => {
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
         <a href="#hero" className="logo">
-          Adrian JSM
+          OrigoFolio
         </a>
 
         <nav className="desktop">
@@ -50,6 +50,6 @@ const NavBar = () => {
       </div>
     </header>
   );
-}
+};
 
 export default NavBar;

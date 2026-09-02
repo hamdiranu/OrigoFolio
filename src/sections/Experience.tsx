@@ -2,9 +2,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { expCards } from "../constants";
-import TitleHeader from "../components/TitleHeader";
-import GlowCard from "../components/GlowCard";
+import GlowCard from "@/components/GlowCard";
+import TitleHeader from "@/components/TitleHeader";
+import { expCards } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,7 @@ const Experience = () => {
   useGSAP(() => {
     // Loop through each timeline card and animate them in
     // as the user scrolls to each card
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
+    gsap.utils.toArray<HTMLElement>(".timeline-card").forEach((card) => {
       // Animate the card coming in from the left
       // and fade in
       gsap.from(card, {
@@ -64,7 +64,7 @@ const Experience = () => {
 
     // Loop through each expText element and animate them in
     // as the user scrolls to each text element
-    gsap.utils.toArray(".expText").forEach((text) => {
+    gsap.utils.toArray<HTMLElement>(".expText").forEach((text) => {
       // Animate the text opacity from 0 to 1
       // and move it from the left to its final position
       // over 1 second with a power2 ease-in-out curve
@@ -104,7 +104,7 @@ const Experience = () => {
             {expCards.map((card) => (
               <div key={card.title} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
-                  <GlowCard card={card}>
+                  <GlowCard card={card} index={0}>
                     <div>
                       <img src={card.imgPath} alt="exp-img" />
                     </div>

@@ -1,9 +1,10 @@
-import { logoIconsList } from "../constants";
+import { logoIconsList } from "@/constants";
+import type { LogoIcon } from "@/types";
 
-const LogoIcon = ({ icon }) => {
+const LogoIconItem = ({ icon }: { icon: LogoIcon }) => {
   return (
     <div className="flex-none flex-center marquee-item">
-      <img src={icon.imgPath} alt={icon.name} />
+      <img src={icon.imgPath} alt="logo" />
     </div>
   );
 };
@@ -16,11 +17,11 @@ const LogoShowcase = () => (
     <div className="marquee h-52">
       <div className="marquee-box md:gap-12 gap-5">
         {logoIconsList.map((icon, index) => (
-          <LogoIcon key={index} icon={icon} />
+          <LogoIconItem key={index} icon={icon} />
         ))}
 
         {logoIconsList.map((icon, index) => (
-          <LogoIcon key={index} icon={icon} />
+          <LogoIconItem key={index} icon={icon} />
         ))}
       </div>
     </div>

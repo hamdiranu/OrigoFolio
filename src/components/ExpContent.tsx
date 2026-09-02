@@ -1,4 +1,10 @@
-const ExpContent = ({ expContent }) => {
+import type { ExpCard } from "@/types";
+
+interface ExpContentProps {
+  expContent: ExpCard;
+}
+
+const ExpContent = ({ expContent }: ExpContentProps) => {
   return (
     <div className="card-border rounded-xl p-10">
       <h1 className="font-semibold text-3xl">{expContent.title}</h1>

@@ -1,22 +1,28 @@
+import { useEffect } from "react";
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useEffect } from "react";
 import * as THREE from "three";
 
-const TechIconCardExperience = ({ model }) => {
+import type { TechStackIcon } from "@/types";
+
+interface TechIconCardExperienceProps {
+  model: TechStackIcon;
+}
+
+const TechIconCardExperience = ({ model }: TechIconCardExperienceProps) => {
   const scene = useGLTF(model.modelPath);
 
   useEffect(() => {
     if (model.name === "Interactive Developer") {
       scene.scene.traverse((child) => {
-        if (child.isMesh) {
+        if (child instanceof THREE.Mesh) {
           if (child.name === "Object_5") {
             child.material = new THREE.MeshStandardMaterial({ color: "white" });
           }
         }
       });
     }
-  }, [scene]);
+  }, [scene, model.name]);
 
   return (
     <Canvas>
@@ -30,8 +36,8 @@ const TechIconCardExperience = ({ model }) => {
       />
       <Environment preset="city" />
 
-      {/* 
-        The Float component from @react-three/drei is used to 
+      {/*
+        The Float component from @react-three/drei is used to
         create a simple animation of the model floating in space.
         The rotationIntensity and floatIntensity props control the
         speed of the rotation and float animations respectively.
