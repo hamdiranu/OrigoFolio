@@ -32,21 +32,20 @@ const navLinks: NavLink[] = [
 ];
 
 const words: WordItem[] = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Look Great", imgPath: "/images/svg/sparkle.svg" },
+  { text: "Peform Better", imgPath: "/images/svg/zap.svg" },
+  { text: "Look Great", imgPath: "/images/svg/sparkle.svg" },
+  { text: "Peform Better", imgPath: "/images/svg/zap.svg" },
+  { text: "Look Great", imgPath: "/images/svg/sparkle.svg" },
+  { text: "Peform Better", imgPath: "/images/svg/zap.svg" },
+  { text: "Look Great", imgPath: "/images/svg/sparkle.svg" },
+  { text: "Peform Better", imgPath: "/images/svg/zap.svg" },
 ];
 
 const counterItems: CounterItem[] = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+  { value: 5, suffix: "+", label: "Years of Experience" },
+  { value: 10, suffix: "+", label: "Satisfied Clients" },
+  { value: 10, suffix: "+", label: "Completed Projects" },
 ];
 
 const logoIconsList: LogoIcon[] = [
@@ -105,23 +104,23 @@ const abilities: Ability[] = [
 
 const techStackImgs: TechStackImg[] = [
   {
-    name: "React Developer",
+    name: "React",
     imgPath: "/images/logos/react.png",
   },
   {
-    name: "Python Developer",
+    name: "typescript",
     imgPath: "/images/logos/python.svg",
   },
   {
-    name: "Backend Developer",
+    name: "Node.js",
     imgPath: "/images/logos/node.png",
   },
   {
-    name: "Interactive Developer",
+    name: "Three.js",
     imgPath: "/images/logos/three.png",
   },
   {
-    name: "Project Manager",
+    name: "Git",
     imgPath: "/images/logos/git.svg",
   },
 ];

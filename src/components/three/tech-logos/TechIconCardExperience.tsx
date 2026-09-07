@@ -3,13 +3,19 @@ import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
+import { useInViewport } from "@/hooks/useInViewport";
 import type { TechStackIcon } from "@/types";
 
 interface TechIconCardExperienceProps {
   model: TechStackIcon;
 }
 
-const TechIconCardExperience = ({ model }: TechIconCardExperienceProps) => {
+interface TechIconSceneProps {
+  model: TechStackIcon;
+  isVisible: boolean;
+}
+
+const TechIconScene = ({ model, isVisible }: TechIconSceneProps) => {
   const scene = useGLTF(model.modelPath);
 
   useEffect(() => {
@@ -25,7 +31,7 @@ const TechIconCardExperience = ({ model }: TechIconCardExperienceProps) => {
   }, [scene, model.name]);
 
   return (
-    <Canvas>
+    <Canvas dpr={[1, 1.5]} frameloop={isVisible ? "always" : "never"}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <spotLight
@@ -61,6 +67,16 @@ const TechIconCardExperience = ({ model }: TechIconCardExperienceProps) => {
 
       <OrbitControls enableZoom={false} />
     </Canvas>
+  );
+};
+
+const TechIconCardExperience = ({ model }: TechIconCardExperienceProps) => {
+  const { ref, isVisible, hasBeenVisible } = useInViewport<HTMLDivElement>();
+
+  return (
+    <div ref={ref} className="w-full h-full">
+      {hasBeenVisible && <TechIconScene model={model} isVisible={isVisible} />}
+    </div>
   );
 };
 

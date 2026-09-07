@@ -11,7 +11,7 @@ const Hero = () => {
     gsap.fromTo(
       ".hero-text h1",
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
+      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" },
     );
   });
 
@@ -26,8 +26,10 @@ const Hero = () => {
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
+              <h1>Building Modern Web</h1>
+              <h1>Experiences</h1>
               <h1>
-                Shaping
+                that{" "}
                 <span className="slide">
                   <span className="wrapper">
                     {words.map((word, index) => (
@@ -46,14 +48,15 @@ const Hero = () => {
                   </span>
                 </span>
               </h1>
-              <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
             </div>
 
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I’m Hamdi, a developer based in Croatia with a passion for
-              code.
+              Hi, I’m Hamdi — a developer from Jakarta who enjoys turning ideas
+              <br />
+              into elegant, interactive experiences.
             </p>
+            
+            
 
             <Button
               text="See My Work"
