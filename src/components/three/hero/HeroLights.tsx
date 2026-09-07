@@ -18,7 +18,7 @@ const HeroLights = () => (
     {/* cool cyan glow cast off the monitors onto the desk and chair */}
     <pointLight
       position={[2, 1.2, 3]}
-      intensity={17}
+      intensity={34}
       color="#cffFFF"
       distance={7}
     />
