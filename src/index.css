@@ -102,58 +102,6 @@ section {
     @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0;
   }
 
-  .navbar {
-    @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
-
-    &.scrolled {
-      @apply top-0 bg-black;
-    }
-
-    &.not-scrolled {
-      @apply md:top-10 top-0 bg-transparent;
-    }
-
-    .inner {
-      @apply mx-auto flex items-center justify-between;
-    }
-
-    .logo {
-      @apply text-white-50 text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
-    }
-
-    nav.desktop {
-      @apply hidden lg:flex items-center;
-
-      ul {
-        @apply flex space-x-8;
-
-        li {
-          @apply text-white-50 relative;
-
-          span {
-            @apply transition-colors duration-300 hover:text-white;
-          }
-
-          .underline {
-            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
-          }
-        }
-      }
-    }
-
-    .contact-btn {
-      @apply flex;
-
-      .inner {
-        @apply px-5 py-2 rounded-lg bg-white text-black group-hover:bg-black-50 transition-colors duration-300;
-
-        span {
-          @apply group-hover:text-white transition-colors duration-300;
-        }
-      }
-    }
-  }
-
   .app-showcase {
     @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
 
@@ -475,4 +423,53 @@ section {
 
 .card:hover::before {
   opacity: 1;
+}
+
+/* ThreeUI animated top dock ("modern" variant), adapted from a full-bleed demo
+   stage into a real fixed navbar. The package's own component hardcodes its
+   links, so we reuse only its .atd-modern styling and drop the stage chrome:
+   the opaque background, the 100% height, and the clipping that would hide a
+   bar positioned inside a zero-height fixed wrapper. */
+.navbar-dock.animated-top-dock-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+  /* the package ships no Geist webfont, so inherit the site's typeface */
+  font-family: inherit;
+  z-index: 100;
+  /* the wrapper spans the viewport but only the bar should catch clicks */
+  pointer-events: none;
+}
+
+/* the stage's film-grain overlay has nothing to sit on here */
+.navbar-dock.animated-top-dock-component::after {
+  content: none;
+}
+
+.navbar-dock .atd-modern__bar {
+  pointer-events: auto;
+}
+
+/* dock items are anchors rather than the package's buttons */
+.navbar-dock .atd-modern__item {
+  text-decoration: none;
+}
+
+.navbar-dock .atd-modern__cta {
+  text-decoration: none;
+}
+
+/* the dock floats over the page, so keep anchor jumps from parking a section
+   heading underneath it */
+#hero,
+#work,
+#experience,
+#skills,
+#education,
+#contact {
+  scroll-margin-top: 120px;
 }
