@@ -1,24 +1,27 @@
-import './App.css'
-import Nav from './components/layout/Nav'
-import Footer from './components/layout/Footer'
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Skills from './components/sections/Skills'
-import Projects from './components/sections/Projects'
-import Contact from './components/sections/Contact'
+import NavBar from "@/components/NavBar";
+import Contact from "@/sections/Contact";
+import Education from "@/sections/Education";
+import Experience from "@/sections/Experience";
+import FeatureCards from "@/sections/FeatureCards";
+import Footer from "@/sections/Footer";
+import Hero from "@/sections/Hero";
+import LogoShowcase from "@/sections/LogoShowcase";
+import ShowcaseSection from "@/sections/ShowcaseSection";
+import TechStack from "@/sections/TechStack";
 
-export default function App() {
-  return (
-    <>
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
-}
+const App = () => (
+  <>
+    <NavBar />
+    <Hero />
+    <ShowcaseSection />
+    <LogoShowcase />
+    <FeatureCards />
+    <Experience />
+    <TechStack />
+    <Education />
+    <Contact />
+    <Footer />
+  </>
+);
+
+export default App;
