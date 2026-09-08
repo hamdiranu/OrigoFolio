@@ -14,19 +14,10 @@ export interface CounterItem {
   label: string;
 }
 
-export interface LogoIcon {
-  imgPath: string;
-}
-
 export interface Ability {
   imgPath: string;
   title: string;
   desc: string;
-}
-
-export interface TechStackImg {
-  name: string;
-  imgPath: string;
 }
 
 export interface TechStackIcon {
@@ -39,25 +30,30 @@ export interface TechStackIcon {
 export interface ExpCard {
   review: string;
   imgPath: string;
+  /** Height class for the card logo — logos differ in how much transparent
+   *  padding they bake in, so they need per-asset sizing to look even. */
+  imgHeightClass?: string;
   logoPath: string;
+  company: string;
   title: string;
   date: string;
   responsibilities: string[];
 }
 
-export interface ExpLogo {
-  name: string;
-  imgPath: string;
-}
-
-export interface Testimonial {
-  name: string;
-  mentions: string;
+export interface EducationCard {
+  institution: string;
+  qualification: string;
+  date: string;
   review: string;
-  imgPath: string;
+  logoPath: string;
+  /** Height class for the logo inside its chip. These marks are dark artwork
+   *  on transparent backgrounds with differing amounts of built-in padding,
+   *  so each needs its own scale to read at the same size. */
+  logoHeightClass?: string;
 }
 
-export interface SocialImg {
+export interface SocialLink {
   name: string;
   imgPath: string;
+  url: string;
 }

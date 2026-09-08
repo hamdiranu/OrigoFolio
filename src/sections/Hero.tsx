@@ -26,8 +26,8 @@ const Hero = () => {
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
-              <h1>Building Modern Web</h1>
-              <h1>Experiences</h1>
+              <h1>Front-End Engineer</h1>
+              <h1>Building Web Apps</h1>
               <h1>
                 that{" "}
                 <span className="slide">
@@ -55,8 +55,6 @@ const Hero = () => {
               <br />
               into elegant, interactive experiences.
             </p>
-            
-            
 
             <Button
               text="See My Work"

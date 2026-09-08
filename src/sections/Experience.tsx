@@ -102,11 +102,20 @@ const Experience = () => {
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
             {expCards.map((card) => (
-              <div key={card.title} className="exp-card-wrapper">
+              <div key={card.company} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
-                  <GlowCard card={card} index={0}>
+                  <GlowCard index={0}>
+                    <div className="mb-5">
+                      <p className="text-white-50 text-lg">{card.review}</p>
+                    </div>
                     <div>
-                      <img src={card.imgPath} alt="exp-img" />
+                      {/* logos vary in aspect ratio, so pin the height and
+                          let width follow rather than rendering them raw */}
+                      <img
+                        src={card.imgPath}
+                        alt={`${card.company} logo`}
+                        className={`${card.imgHeightClass ?? "h-10"} w-auto object-contain`}
+                      />
                     </div>
                   </GlowCard>
                 </div>
@@ -121,7 +130,12 @@ const Experience = () => {
                         <img src={card.logoPath} alt="logo" />
                       </div>
                       <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
+                        <h1 className="font-semibold text-3xl">
+                          {card.company}
+                        </h1>
+                        <p className="mt-2 text-lg text-[#839CB5]">
+                          {card.title}
+                        </p>
                         <p className="my-5 text-white-50">
                           🗓️&nbsp;{card.date}
                         </p>

@@ -1,22 +1,34 @@
-import { socialImgs } from "@/constants";
+import { contactDetails, socialLinks } from "@/constants";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="flex flex-col justify-center">
-          <p>Terms & Conditions</p>
+          <a
+            href={`mailto:${contactDetails.email}`}
+            className="hover:text-white transition-colors"
+          >
+            {contactDetails.email}
+          </a>
         </div>
         <div className="socials">
-          {socialImgs.map((socialImg, index) => (
-            <div key={index} className="icon">
-              <img src={socialImg.imgPath} alt="social icon" />
-            </div>
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label={social.name}
+              className="icon"
+            >
+              <img src={social.imgPath} alt={social.name} />
+            </a>
           ))}
         </div>
         <div className="flex flex-col justify-center">
           <p className="text-center md:text-end">
-            © {new Date().getFullYear()} Hamdi Hajdin. All rights reserved.
+            © {new Date().getFullYear()} Hamdi Ranuharja. All rights reserved.
           </p>
         </div>
       </div>

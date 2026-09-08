@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 
 import ContactExperience from "@/components/three/contact/ContactExperience";
 import TitleHeader from "@/components/TitleHeader";
+import { contactDetails } from "@/constants";
 
 interface ContactForm {
   name: string;
@@ -54,10 +55,36 @@ const Contact = () => {
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="Get in Touch – Let’s Connect"
-          sub="💬 Have questions or ideas? Let’s talk! 🚀"
+          sub="💬 Open to front-end roles and collaboration"
         />
         <div className="grid-12-cols mt-16">
-          <div className="xl:col-span-5">
+          <div className="xl:col-span-5 flex flex-col gap-7">
+            <div className="card-border rounded-xl p-10 flex flex-col gap-4">
+              <a
+                href={`mailto:${contactDetails.email}`}
+                className="text-white-50 text-lg hover:text-white transition-colors break-all"
+              >
+                ✉️&nbsp;&nbsp;{contactDetails.email}
+              </a>
+              <a
+                href={`tel:${contactDetails.phone}`}
+                className="text-white-50 text-lg hover:text-white transition-colors"
+              >
+                📱&nbsp;&nbsp;{contactDetails.phone}
+              </a>
+              <a
+                href={contactDetails.linkedinUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-white-50 text-lg hover:text-white transition-colors break-all"
+              >
+                💼&nbsp;&nbsp;{contactDetails.linkedin}
+              </a>
+              <p className="text-white-50 text-lg">
+                🗣️&nbsp;&nbsp;{contactDetails.languages}
+              </p>
+            </div>
+
             <div className="flex-center card-border rounded-xl p-10">
               <form
                 ref={formRef}
@@ -110,7 +137,7 @@ const Contact = () => {
                       {loading ? "Sending..." : "Send Message"}
                     </p>
                     <div className="arrow-wrapper">
-                      <img src="/images/arrow-down.svg" alt="arrow" />
+                      <img src="/images/svg/arrow-down.svg" alt="arrow" />
                     </div>
                   </div>
                 </button>

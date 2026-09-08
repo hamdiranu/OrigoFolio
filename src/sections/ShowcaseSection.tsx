@@ -7,20 +7,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const rydeRef = useRef<HTMLDivElement>(null);
-  const libraryRef = useRef<HTMLDivElement>(null);
-  const ycDirectoryRef = useRef<HTMLDivElement>(null);
+  const storeRef = useRef<HTMLDivElement>(null);
+  const eTelcoRef = useRef<HTMLDivElement>(null);
+  const sipRekRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     // Animation for the main section
-    gsap.fromTo(
-      sectionRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.5 }
-    );
+    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
 
     // Animations for each app showcase
-    const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
+    const cards = [storeRef.current, eTelcoRef.current, sipRekRef.current];
 
     cards.forEach((card, index) => {
       gsap.fromTo(
@@ -47,38 +43,54 @@ const AppShowcase = () => {
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
         <div className="showcaselayout">
-          <div ref={rydeRef} className="first-project-wrapper">
+          <div ref={storeRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/png/project1.png" alt="Ryde App Interface" />
+              <img
+                src="/images/png/project1.png"
+                alt="DummyJSON Store dashboard"
+              />
             </div>
             <div className="text-content">
               <h2>
-                On-Demand Rides Made Simple with a Powerful, User-Friendly App
-                called Ryde
+                A Mini E-Commerce Platform with a Fully Interactive Analytics
+                Dashboard — DummyJSON Store
               </h2>
               <p className="text-white-50 md:text-xl">
-                An app built with React Native, Expo, & TailwindCSS for a fast,
-                user-friendly experience.
+                Built with Vue.js, Vite, and TypeScript. Surfaces product counts,
+                user activity, cart status, and revenue, with bar and pie charts
+                for category distribution — alongside browsing, cart, and
+                checkout flows.
               </p>
+              <a
+                href="https://hamdi-dummy-store.netlify.app"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-block text-white-50 md:text-xl underline underline-offset-4 hover:text-white transition-colors"
+              >
+                View live demo ↗
+              </a>
             </div>
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
+            <div className="project" ref={eTelcoRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
                 <img
                   src="/images/png/project2.png"
-                  alt="Library Management Platform"
+                  alt="E-Telco procurement platform"
                 />
               </div>
-              <h2>The Library Management Platform</h2>
+              <h2>E-Telco — Telco Procurement, Digitised End to End</h2>
             </div>
 
-            <div className="project" ref={ycDirectoryRef}>
+            <div className="project" ref={sipRekRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/png/project3.png" alt="YC Directory App" />
+                <img
+                  src="/images/png/project3.png"
+                  alt="SIP-Rek advertisement tax information system"
+                />
               </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
+              <h2>SIP-Rek! — Advertisement Tax Information System</h2>
             </div>
           </div>
         </div>

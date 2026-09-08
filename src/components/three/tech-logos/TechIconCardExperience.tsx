@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import * as THREE from "three";
 
 import { useInViewport } from "@/hooks/useInViewport";
 import type { TechStackIcon } from "@/types";
@@ -17,18 +15,6 @@ interface TechIconSceneProps {
 
 const TechIconScene = ({ model, isVisible }: TechIconSceneProps) => {
   const scene = useGLTF(model.modelPath);
-
-  useEffect(() => {
-    if (model.name === "Interactive Developer") {
-      scene.scene.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          if (child.name === "Object_5") {
-            child.material = new THREE.MeshStandardMaterial({ color: "white" });
-          }
-        }
-      });
-    }
-  }, [scene, model.name]);
 
   return (
     <Canvas dpr={[1, 1.5]} frameloop={isVisible ? "always" : "never"}>
