@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+import LiveDemoButton from "@/components/LiveDemoButton";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
@@ -46,7 +48,7 @@ const AppShowcase = () => {
           <div ref={storeRef} className="first-project-wrapper">
             <div className="image-wrapper">
               <img
-                src="/images/png/project1.png"
+                src="/images/png/dummyjson-store-hero-showcase.png"
                 alt="DummyJSON Store dashboard"
               />
             </div>
@@ -61,22 +63,18 @@ const AppShowcase = () => {
                 for category distribution — alongside browsing, cart, and
                 checkout flows.
               </p>
-              <a
+              <LiveDemoButton
                 href="https://hamdi-dummy-store.netlify.app"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-block text-white-50 md:text-xl underline underline-offset-4 hover:text-white transition-colors"
-              >
-                View live demo ↗
-              </a>
+                label="View the DummyJSON Store live demo"
+              />
             </div>
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={eTelcoRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
+              <div className="image-wrapper">
                 <img
-                  src="/images/png/project2.png"
+                  src="/images/png/etelco-showcase-v2.png"
                   alt="E-Telco procurement platform"
                 />
               </div>
@@ -84,9 +82,9 @@ const AppShowcase = () => {
             </div>
 
             <div className="project" ref={sipRekRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
+              <div className="image-wrapper">
                 <img
-                  src="/images/png/project3.png"
+                  src="/images/png/siprek-showcase-v2.png"
                   alt="SIP-Rek advertisement tax information system"
                 />
               </div>
