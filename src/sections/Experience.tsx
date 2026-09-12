@@ -36,27 +36,20 @@ const Experience = () => {
       });
     });
 
-    // Animate the timeline height as the user scrolls
-    // from the top of the timeline to 70% down the screen
-    // The timeline height should scale down from 1 to 0
-    // as the user scrolls up the screen
-    gsap.to(".timeline", {
-      // Set the origin of the animation to the bottom of the timeline
-      transformOrigin: "bottom bottom",
-      // Animate the timeline height over 1 second
+    // Draw the timeline in as the user scrolls. This used to be done by
+    // shrinking an opaque black bar that covered the line — which only read as
+    // invisible while the page behind it was black. With the temple backdrop
+    // showing through, the line grows from its own top instead.
+    gsap.set(".gradient-line", { transformOrigin: "top top", scaleY: 0 });
+    gsap.to(".gradient-line", {
       ease: "power1.inOut",
-      // Trigger the animation when the timeline is at the top of the screen
-      // and end it when the timeline is at 70% down the screen
       scrollTrigger: {
-        trigger: ".timeline",
+        trigger: ".timeline-wrapper",
         start: "top center",
         end: "70% center",
-        // Update the animation as the user scrolls
         onUpdate: (self) => {
-          // Scale the timeline height as the user scrolls
-          // from 1 to 0 as the user scrolls up the screen
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
+          gsap.to(".gradient-line", {
+            scaleY: self.progress,
           });
         },
       },
@@ -122,7 +115,6 @@ const Experience = () => {
                 <div className="xl:w-4/6">
                   <div className="flex items-start">
                     <div className="timeline-wrapper">
-                      <div className="timeline" />
                       <div className="gradient-line w-1 h-full" />
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">

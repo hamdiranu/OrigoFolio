@@ -3,6 +3,19 @@
 
 :root {
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+
+  /* Frosted panels rather than flat black, so the temple backdrop reads
+     through the cards instead of being blocked by them. Matches the glass
+     treatment on the navbar dock. Tune the whole set from here. */
+  --glass-bg: linear-gradient(
+    160deg,
+    rgba(32, 35, 48, 0.62),
+    rgba(14, 15, 22, 0.72)
+  );
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-blur: blur(16px) saturate(140%);
+  --glass-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.9),
+    inset 0 1px rgba(255, 255, 255, 0.06);
 }
 
 html,
@@ -123,10 +136,6 @@ section {
       .text-content {
         @apply space-y-5 mt-5;
 
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
-
         h2 {
           @apply text-2xl md:text-3xl lg:text-4xl font-bold;
         }
@@ -136,18 +145,34 @@ section {
     .project-list-wrapper {
       @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
 
+      /* the v2 screenshots are full-bleed 2800x1800 (1.56), where the originals
+         were letterboxed art that needed side padding and a pastel plate behind
+         them — so these now crop to fill rather than sitting inside a frame */
       .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
+        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl overflow-hidden py-0;
       }
 
       img {
-        @apply w-full h-full object-contain rounded-xl;
+        @apply w-full h-full object-cover rounded-xl;
       }
 
       h2 {
         @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
       }
     }
+  }
+
+  /* Box for the threeui live-demo embed. The iframe fills this and centres the
+     pill itself, so the extra room is what keeps the spin beam and its 25px
+     glow from being clipped at the iframe's edge — the srcdoc is transparent
+     now, so the slack is invisible and only widens the hit area. */
+  .live-demo-button {
+    @apply inline-block w-[210px] h-[76px] -ml-4 rounded-full;
+  }
+
+  .live-demo-button:focus-visible {
+    /* the iframe can't take focus, so the ring has to live on the anchor */
+    @apply outline-none ring-2 ring-white/70 ring-offset-2 ring-offset-black;
   }
 
   .cta-wrapper {
@@ -179,7 +204,11 @@ section {
   }
 
   .card-border {
-    @apply border border-black-50 bg-black-100;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
   }
 
   .marquee-item {
@@ -190,12 +219,12 @@ section {
     @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
   }
 
-  .timeline {
-    @apply absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-black;
-  }
-
   .timeline-logo {
-    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
+    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 
     /* company logos ship at their own sizes and aspect ratios, so fit them
        to the badge instead of letting them overflow it */
@@ -266,7 +295,11 @@ section {
       @apply flex items-center justify-center gap-5;
 
       .icon {
-        @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
+        @apply flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
       }
 
       img {
@@ -472,4 +505,33 @@ section {
 #education,
 #contact {
   scroll-margin-top: 120px;
+}
+
+/* Kage temple world as a page-wide backdrop. It sits behind everything and
+   never takes pointer input, so the page's own 3D scenes and controls keep
+   their interactions. */
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* darkens the scene so body copy stays readable over the moon and lanterns.
+   the scene's own canvas sets z-index 1, so the scrim has to clear it. */
+.site-background__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.site-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* the page's own black would otherwise paint straight over the backdrop */
+body {
+  background-color: transparent;
 }
