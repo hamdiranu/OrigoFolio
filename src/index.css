@@ -136,10 +136,6 @@ section {
       .text-content {
         @apply space-y-5 mt-5;
 
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
-
         h2 {
           @apply text-2xl md:text-3xl lg:text-4xl font-bold;
         }
